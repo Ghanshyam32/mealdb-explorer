@@ -15,24 +15,39 @@ function RecipeDetail() {
       .finally(() => setLoading(false));
   }, [id]);
 
-  if (loading) return <div className="loader">Loading...</div>;
-  if (!meal) return <div className="loader">Meal not found.</div>;
+  if (loading) {
+    return (
+      <div className="detail-loader">
+        <div className="detail-spinner" />
+        <p>Loading recipe...</p>
+      </div>
+    );
+  }
 
-  // Build ingredients list from meal object
+  if (!meal) {
+    return (
+      <div className="detail-loader">
+        <p>Recipe not found.</p>
+        <button className="back-btn" onClick={() => navigate(-1)}>← Go back</button>
+      </div>
+    );
+  }
+
   const ingredients = [];
   for (let i = 1; i <= 20; i++) {
     const ingredient = meal[`strIngredient${i}`];
     const measure = meal[`strMeasure${i}`];
     if (ingredient && ingredient.trim()) {
       ingredients.push(
-        `${measure ? measure.trim() : ""} ${ingredient.trim()}`.trim(),
+        `${measure ? measure.trim() : ""} ${ingredient.trim()}`.trim()
       );
     }
   }
 
-  //   const embedUrl = getYoutubeEmbed(meal.strYoutube);
+  const instructionSteps = meal.strInstructions
+    ? meal.strInstructions.split(/\r?\n/).filter((s) => s.trim().length > 0)
+    : [];
 
-  // Convert YouTube watch URL to embed URL
   const getYoutubeEmbed = (url) => {
     if (!url) return null;
     const videoId = url.split("v=")[1];
@@ -43,48 +58,71 @@ function RecipeDetail() {
 
   return (
     <div className="recipe-detail">
-      <button className="back-btn" onClick={() => navigate(-1)}>
-        ← Back
-      </button>
-
-      <div className="recipe-header">
-        <img src={meal.strMealThumb} alt={meal.strMeal} />
-        <div className="recipe-info">
-          <h1>{meal.strMeal}</h1>
-          <p>
-            <span>Category:</span> {meal.strCategory}
-          </p>
-          <p>
-            <span>Cuisine:</span> {meal.strArea}
-          </p>
+      {/* Full-width hero */}
+      <div
+        className="recipe-hero"
+        style={{ backgroundImage: `url(${meal.strMealThumb})` }}
+      >
+        <div className="recipe-hero-overlay">
+          <div className="recipe-hero-content">
+            <button className="hero-back-btn" onClick={() => navigate(-1)}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+              Back
+            </button>
+            <div className="recipe-chips">
+              {meal.strCategory && (
+                <span className="recipe-chip">{meal.strCategory}</span>
+              )}
+              {meal.strArea && (
+                <span className="recipe-chip">{meal.strArea} Cuisine</span>
+              )}
+            </div>
+            <h1>{meal.strMeal}</h1>
+          </div>
         </div>
       </div>
 
-      <div className="recipe-body">
-        {/* Ingredients */}
-        <div className="ingredients-section">
-          <h2>Ingredients</h2>
-          <ul>
-            {ingredients.map((item, idx) => (
-              <li key={idx}>{item}</li>
-            ))}
-          </ul>
+      {/* Main content */}
+      <div className="recipe-content page-wrap">
+        <div className="recipe-grid">
+          {/* Ingredients */}
+          <div className="recipe-card ingredients-card">
+            <h2 className="card-label">Ingredients</h2>
+            <div className="ingredient-chips">
+              {ingredients.map((item, idx) => (
+                <span key={idx} className="ingredient-chip">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Instructions */}
+          <div className="recipe-card instructions-card">
+            <h2 className="card-label">Instructions</h2>
+            <div className="instructions-body">
+              {instructionSteps.map((step, idx) => (
+                <p key={idx}>{step}</p>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Instructions */}
-        <div className="instructions-section">
-          <h2>Instructions</h2>
-          <p>{meal.strInstructions}</p>
-        </div>
+        {/* YouTube */}
+        {embedUrl && (
+          <div className="recipe-card video-card">
+            <h2 className="card-label">Video Tutorial</h2>
+            <iframe
+              src={embedUrl}
+              title={meal.strMeal}
+              allowFullScreen
+            />
+          </div>
+        )}
       </div>
-
-      {/* YouTube Embed */}
-      {embedUrl && (
-        <div className="video-section">
-          <h2>Video Tutorial</h2>
-          <iframe src={embedUrl} title={meal.name} allowFullScreen />
-        </div>
-      )}
     </div>
   );
 }

@@ -1,18 +1,94 @@
-.category-page h2 {
-  margin-bottom: 24px;
-  font-size: 1.6rem;
-  color: #e74c3c;
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 9px 18px;
+  border-radius: var(--r-md);
+  font-family: inherit;
+  transition: color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  margin-bottom: 36px;
+  box-shadow: var(--shadow-xs);
+}
+
+.back-btn:hover {
+  color: var(--text-1);
+  border-color: #ccc;
+  box-shadow: var(--shadow-sm);
+}
+
+.cat-page-header {
+  margin-bottom: 40px;
+}
+
+.cat-badge {
+  display: inline-block;
+  background: var(--primary-bg);
+  color: var(--primary);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin-bottom: 14px;
+}
+
+.cat-page-header h1 {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: var(--text-1);
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.cat-count {
+  color: var(--text-3);
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .meals-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 20px;
 }
 
-.loader {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #e74c3c;
-  margin: 20px 0;
+.page-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 80px 24px;
+  color: var(--text-3);
+  font-size: 0.9rem;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .cat-page-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .meals-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
 }

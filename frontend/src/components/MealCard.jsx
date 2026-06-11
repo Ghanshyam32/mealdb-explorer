@@ -9,11 +9,16 @@ function MealCard({ meal }) {
       className="meal-card"
       onClick={() => navigate(`/meal/${meal.id || meal.idMeal}`)}
     >
-      <img
-        src={meal.strMealThumb || meal.thumbnail}
-        alt={meal.strMeal || meal.name}
-      />
-
+      <div className="meal-img-wrap">
+        <img
+          src={meal.strMealThumb || meal.thumbnail}
+          alt={meal.strMeal || meal.name}
+          loading="lazy"
+        />
+        <div className="meal-overlay">
+          <span className="meal-view-label">View Recipe →</span>
+        </div>
+      </div>
       <div className="meal-card-body">
         <h3>{meal.strMeal || meal.name}</h3>
       </div>

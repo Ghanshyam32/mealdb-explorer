@@ -9,13 +9,11 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/category/:name" element={<CategoryPage />} />
-          <Route path="/meal/:id" element={<RecipeDetail />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/category/:name" element={<CategoryPage />} />
+        <Route path="/meal/:id" element={<RecipeDetail />} />
+      </Routes>
     </BrowserRouter>
   );
 }
