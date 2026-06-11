@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <Link to="/" className="nav-brand">
-        🍽️ MealDB Explorer
+        <span>●</span> MEALDB
       </Link>
       <div className="nav-links">
         <Link to="/">Home</Link>

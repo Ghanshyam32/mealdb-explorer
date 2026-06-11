@@ -43,25 +43,33 @@ function Home() {
     <div className="home">
       {/* Search Section */}
       <div className="hero">
-        <h1>Find Your Next Meal 🍴</h1>
+        <div className="hero-tag">● Recipe Explorer</div>
+        <h1>
+          Discover <em>any</em>
+          <br />
+          meal, anytime.
+        </h1>
+        <p className="hero-subtitle">
+          300+ recipes from cuisines around the world
+        </p>
         <form onSubmit={handleSearch} className="search-form">
           <input
             type="text"
-            placeholder="Search meals... e.g. Chicken, Pasta"
+            placeholder="Try 'Chicken', 'Pasta', 'Sushi'..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <button type="submit">Search</button>
+          <button type="submit">SEARCH →</button>
         </form>
         <button className="random-btn" onClick={handleRandom}>
-          🎲 I'm Feeling Hungry
+          🎲 Surprise me
         </button>
       </div>
 
       {/* Search Results */}
       {searchResults.length > 0 && (
         <section>
-          <h2>Search Results</h2>
+          <p className="section-title">Search Results</p>
           <div className="meals-grid">
             {searchResults.map((meal) => (
               <MealCard key={meal.idMeal} meal={meal} />
@@ -70,10 +78,9 @@ function Home() {
         </section>
       )}
 
-      {/* Categories */}
       {searchResults.length === 0 && (
         <section>
-          <h2>Browse by Category</h2>
+          <p className="section-title">Browse by Category</p>
           <div className="categories-grid">
             {categories.map((cat) => (
               <div
