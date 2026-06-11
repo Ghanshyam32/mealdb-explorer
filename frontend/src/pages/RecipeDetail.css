@@ -1,0 +1,138 @@
+.recipe-detail {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  padding: 0;
+  font-weight: 600;
+}
+
+.recipe-header {
+  display: flex;
+  gap: 30px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.recipe-header img {
+  width: 350px;
+  height: 280px;
+  object-fit: cover;
+}
+
+.recipe-info {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.recipe-info h1 {
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.recipe-info p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.recipe-info p span {
+  font-weight: 700;
+  color: #333;
+}
+
+.recipe-body {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.ingredients-section,
+.instructions-section {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.ingredients-section h2,
+.instructions-section h2 {
+  font-size: 1.2rem;
+  color: #e74c3c;
+  margin-bottom: 16px;
+}
+
+.ingredients-section ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ingredients-section ul li {
+  padding: 6px 10px;
+  background: #f9f9f9;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  border-left: 3px solid #e74c3c;
+}
+
+.instructions-section p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #555;
+  white-space: pre-line;
+}
+
+.video-section {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+}
+
+.video-section h2 {
+  font-size: 1.2rem;
+  color: #e74c3c;
+  margin-bottom: 16px;
+}
+
+.video-section iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+  border-radius: 8px;
+}
+
+.loader {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #e74c3c;
+  margin: 40px 0;
+}
+
+@media (max-width: 768px) {
+  .recipe-header {
+    flex-direction: column;
+  }
+  .recipe-header img {
+    width: 100%;
+    height: 220px;
+  }
+  .recipe-body {
+    grid-template-columns: 1fr;
+  }
+}

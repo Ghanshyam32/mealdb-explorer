@@ -1,0 +1,18 @@
+.category-page h2 {
+  margin-bottom: 24px;
+  font-size: 1.6rem;
+  color: #e74c3c;
+}
+
+.meals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.loader {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #e74c3c;
+  margin: 20px 0;
+}
