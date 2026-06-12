@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8080/api/meals";
+const BASE_URL = "https://mealdb-explorer-u29h.onrender.com/api/meals";
 
 export const searchMeals = (name) =>
   axios.get(`${BASE_URL}/search?name=${name}`);
