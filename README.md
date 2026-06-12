@@ -20,6 +20,15 @@ A full-stack recipe browsing app built with Spring Boot and React. Fetches data 
 - Random meal discovery
 - Server-side caching (10 min TTL) to avoid redundant external API calls
 
+## Deployment
+
+| Layer | Platform |
+|---|---|
+| Backend | Render (Docker, free tier) |
+| Frontend | GCP Cloud Run |
+
+**Live:** [Frontend](https://meal-db-frontend-956876727417.us-central1.run.app) · [Backend API](https://mealdb-explorer-u29h.onrender.com)
+
 ## Project Structure
 
 ```
